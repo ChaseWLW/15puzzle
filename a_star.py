@@ -5,7 +5,7 @@ def __main__():
 	#start_state_array=[0,1,2,3,	4,5,6,7,	8,9,10,11,	12,13,14,15];
 	#start_state_array=[0,2,10,3,	15,8,6,14,	5,13,1,7,	12,9,11,4];
 	start_state_array=[9,14,15,10,	11,12,2,3,	4,0,1,13,	5,7,8,6];
-	
+
 	target_state_array=[1,2,3,4,	5,6,7,8,	9,10,11,12,	13,14,15,0];
 	open_candidate_list=PQ(); #Put the candidate states
 	closed_list={}; #dict(); #Dict, used to put the closed states
@@ -15,7 +15,10 @@ def __main__():
 
 
 	print("After Evaluation:");
-	print(cost_evaluated_state(start_state, target_state_array).array);
+	display(cost_evaluated_state(start_state, target_state_array).array);
+	print("-------------");
+	zero_index=start_state.array.index(0);
+	display(swap_ele(start_state, zero_index, zero_index-4).array),
 	print("End Evaluation");
 
 
@@ -44,7 +47,6 @@ def __main__():
 		print("open_candidate_list size:", open_candidate_list.qsize());
 
 		
-
 		#print(open_candidate_list);
 
 
@@ -61,7 +63,7 @@ def __main__():
 def display(state_arry):
 	a=state_arry;
 	for i in range(0,4):
-		print a[i],a[i+1],a[i+2],a[i+3];
+		print a[i*4],a[i*4+1],a[i*4+2],a[i*4+3];
 
 
 
@@ -73,8 +75,8 @@ def cost_evaluated_state(cur_state,target_state_array):
 			if target_state_array[index_tar]==cur_state.array[index_cur]:
 				corr_index=index_tar;
 				break;
-		h_dis_x=((corr_index%4)-(index_cur%4)) if ((corr_index%4)-(index_cur%4))>0 else ((index_cur%4)-(corr_index%4));
-		h_dis_y=((corr_index//4)-(index_cur//4)) if ((corr_index//4)-(index_cur//4))>0 else ((index_cur//4)-(corr_index//4));
+		h_dis_x=abs((corr_index%4)-(index_cur%4));
+		h_dis_y=abs((corr_index//4)-(index_cur//4));
 		cur_state.h_dis=h_dis_x+h_dis_y;
 		cur_state.f_dis+=cur_state.h_dis;
 	return cur_state;
@@ -90,7 +92,7 @@ def add_childs_to_openlist(state, closed_list, open_candidate_list, target_state
 	#for i in range(0,16):
 	if zero_index//4-1 >= 0:
 		new_state = cost_evaluated_state(
-						swap_ele(state, zero_index, (zero_index-4)%4),
+						swap_ele(state, zero_index, zero_index-4),
 						target_state_array
 					);
 		# Put the candidate into the open candidate list.
@@ -100,7 +102,7 @@ def add_childs_to_openlist(state, closed_list, open_candidate_list, target_state
 
 	if zero_index//4+1 <= 3:
 		new_state = cost_evaluated_state(
-						swap_ele(state, zero_index, (zero_index+4)%4),
+						swap_ele(state, zero_index, zero_index+4),
 						target_state_array
 					);
 		# Put the candidate into the open candidate list.
