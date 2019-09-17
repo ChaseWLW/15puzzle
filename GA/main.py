@@ -7,4 +7,5 @@ MUTATION_RATE=0.01
 ELITES_SIZE = 10
 MAX_GENERATION = 1000
 
-print(GENE_LEN)
+if __name__ == '__main__':
+	print(ELITES_SIZE)
