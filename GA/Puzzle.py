@@ -2,6 +2,11 @@ import sys
 import os
 from math import sqrt
 
+###To do 
+### 1* pratical move
+### 2* check legal puzzle
+
+
 class Puzzle:
 	def __init__(self,initialState):
 		self.state = initialState
@@ -49,3 +54,7 @@ class Puzzle:
 		if(self.size %2 == 1 and self.inversionNum %2 == 1):
 			print("puzzle is insolvable! exit!")
 			os._exit(0)
+		elif(self.size %2 == 0):
+			if((self.position//self.size)%2  == self.inversionNum % 2):
+				print("puzzle is insolvable! exit!")
+				os._exit(0)
