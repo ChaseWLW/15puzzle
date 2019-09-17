@@ -11,6 +11,7 @@ MAX_GENERATION = 1000
 
 
 if __name__ == '__main__':
-	initState=[2,1,0,3]
+	initState=[1,2,0,3]
 	puzzle = Puzzle(initState)
 	print(puzzle.state)
+	print(puzzle.manhattanDist)
