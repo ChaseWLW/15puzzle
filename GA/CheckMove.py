@@ -1,0 +1,2 @@
+
+def checkMove(self):

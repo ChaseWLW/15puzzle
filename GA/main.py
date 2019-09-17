@@ -1,4 +1,6 @@
 #!/usr/bin/python
+from  InitialPopulation  import *
+from Puzzle import Puzzle
 
 GENE_LEN = 140 
 POPULATION_SIZE=100
@@ -7,5 +9,8 @@ MUTATION_RATE=0.01
 ELITES_SIZE = 10
 MAX_GENERATION = 1000
 
+
 if __name__ == '__main__':
-	print(ELITES_SIZE)
+	initState=[2,1,3,4,0,6,7,5,8]
+	puzzle = Puzzle(initState)
+	print(puzzle.state)
