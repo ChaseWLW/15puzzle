@@ -1,0 +1,142 @@
+nohup: ignoring input
+[I 19:16:10.182 NotebookApp] [nb_conda_kernels] enabled, 3 kernels found
+[I 19:16:10.436 NotebookApp] Serving notebooks from local directory: /home/longy/workspace/15puzzle
+[I 19:16:10.436 NotebookApp] The Jupyter Notebook is running at:
+[I 19:16:10.437 NotebookApp] http://localhost:8889/
+[I 19:16:10.437 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 19:16:14.421 NotebookApp] 302 GET / (::1) 0.86ms
+[W 19:16:14.506 NotebookApp] Clearing invalid/expired login cookie username-localhost-8888
+[W 19:16:14.508 NotebookApp] Clearing invalid/expired login cookie username-localhost-8888
+[I 19:16:14.508 NotebookApp] 302 GET /tree? (::1) 3.29ms
+[I 19:16:17.182 NotebookApp] 302 POST /login?next=%2Ftree%3F (::1) 1.86ms
+[I 19:16:36.884 NotebookApp] Creating new notebook in /GA
+[I 19:16:39.590 NotebookApp] Kernel started: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[W 19:16:39.726 NotebookApp] 404 GET /nbextensions/widgets/notebook/js/extension.js?v=20190917191610 (::1) 15.60ms referer=http://localhost:8888/notebooks/GA/Untitled.ipynb?kernel_name=python3
+[I 19:18:39.514 NotebookApp] Saving file at /GA/Untitled.ipynb
+[I 19:20:39.615 NotebookApp] Saving file at /GA/Untitled.ipynb
+[I 20:22:53.886 NotebookApp] Saving file at /GA/main.ipynb
+[I 20:24:54.258 NotebookApp] Saving file at /GA/main.ipynb
+[I 20:34:55.716 NotebookApp] Saving file at /GA/main.ipynb
+[I 20:36:18.149 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:36:18.567 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 20:36:19.074 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:36:19.074 NotebookApp] Replaying 6 buffered messages
+[I 20:36:55.727 NotebookApp] Saving file at /GA/main.ipynb
+[I 20:37:43.578 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:37:43.888 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 20:37:44.443 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:37:44.444 NotebookApp] Replaying 6 buffered messages
+[I 20:38:55.870 NotebookApp] Saving file at /GA/main.ipynb
+[I 20:40:43.666 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:40:43.980 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 20:40:44.509 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:40:44.509 NotebookApp] Replaying 5 buffered messages
+[I 20:40:56.298 NotebookApp] Saving file at /GA/main.ipynb
+[I 20:41:01.841 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:41:02.151 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 20:41:02.817 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:41:02.817 NotebookApp] Replaying 3 buffered messages
+[I 20:42:57.128 NotebookApp] Saving file at /GA/main.ipynb
+[I 20:43:05.097 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:43:05.415 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 20:43:06.043 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:43:06.043 NotebookApp] Replaying 3 buffered messages
+[I 20:44:58.064 NotebookApp] Saving file at /GA/main.ipynb
+[I 20:59:27.566 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:59:27.893 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 20:59:28.591 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:59:28.591 NotebookApp] Replaying 3 buffered messages
+[I 20:59:55.448 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:59:55.761 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 20:59:56.375 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 20:59:56.375 NotebookApp] Replaying 3 buffered messages
+[I 21:01:00.928 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:19:04.532 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:21:05.340 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:31:40.927 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:31:41.349 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:31:41.899 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:31:41.899 NotebookApp] Replaying 3 buffered messages
+[I 21:33:07.321 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:33:23.290 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:33:23.607 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:33:24.329 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:33:24.329 NotebookApp] Replaying 3 buffered messages
+[I 21:33:43.007 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:33:43.321 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:33:43.948 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:33:43.948 NotebookApp] Replaying 5 buffered messages
+[I 21:34:13.026 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:34:13.340 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:34:13.815 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:34:13.815 NotebookApp] Replaying 6 buffered messages
+[I 21:35:07.467 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:35:37.030 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:35:37.345 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:35:37.832 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:35:37.833 NotebookApp] Replaying 5 buffered messages
+[I 21:37:08.238 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:37:29.606 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:37:29.921 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:37:30.586 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:37:30.587 NotebookApp] Replaying 3 buffered messages
+[I 21:37:47.000 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:37:47.419 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:37:47.927 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:37:47.927 NotebookApp] Replaying 3 buffered messages
+[I 21:38:13.449 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:38:13.759 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:38:14.251 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:38:14.251 NotebookApp] Replaying 6 buffered messages
+[I 21:39:08.823 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:41:07.387 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:41:07.809 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:41:08.471 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:41:08.471 NotebookApp] Replaying 6 buffered messages
+[I 21:41:08.894 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:49:46.546 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:49:46.865 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:49:47.582 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:49:47.582 NotebookApp] Replaying 6 buffered messages
+[I 21:51:09.607 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:52:20.473 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:52:20.785 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:52:21.329 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:52:21.329 NotebookApp] Replaying 3 buffered messages
+[I 21:53:10.266 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:54:15.190 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:54:15.513 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:54:16.048 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:54:16.049 NotebookApp] Replaying 3 buffered messages
+[I 21:55:10.255 NotebookApp] Saving file at /GA/main.ipynb
+[I 21:59:38.717 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:59:39.082 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 21:59:39.744 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:59:39.745 NotebookApp] Replaying 5 buffered messages
+[I 21:59:59.141 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 21:59:59.456 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 22:00:00.065 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:00:00.065 NotebookApp] Replaying 3 buffered messages
+[I 22:01:12.138 NotebookApp] Saving file at /GA/main.ipynb
+[I 22:02:02.274 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:02:02.588 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 22:02:03.107 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:02:03.107 NotebookApp] Replaying 5 buffered messages
+[I 22:02:15.918 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:02:16.233 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 22:02:16.757 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:02:16.757 NotebookApp] Replaying 6 buffered messages
+[I 22:02:19.235 NotebookApp] KernelRestarter: restarting kernel (1/5), keep random ports
+WARNING:root:kernel d57b93c0-eb51-41c0-8a3a-48624ac5329a restarted
+[I 22:03:12.485 NotebookApp] Saving file at /GA/main.ipynb
+[I 22:03:28.762 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:03:29.078 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 22:03:29.641 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:03:29.642 NotebookApp] Replaying 3 buffered messages
+[I 22:04:37.629 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:04:37.945 NotebookApp] Kernel restarted: d57b93c0-eb51-41c0-8a3a-48624ac5329a
+[I 22:04:38.524 NotebookApp] Restoring connection for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
+[I 22:04:38.524 NotebookApp] Replaying 6 buffered messages
+[I 22:05:12.491 NotebookApp] Saving file at /GA/main.ipynb
+[W 22:16:08.526 NotebookApp] WebSocket ping timeout after 119933 ms.
+[I 22:16:13.531 NotebookApp] Starting buffering for d57b93c0-eb51-41c0-8a3a-48624ac5329a:6927aec64aa1479f8cef930564f4b856
