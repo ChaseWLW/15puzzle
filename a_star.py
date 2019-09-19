@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*- 
 from State import *
 from Queue import PriorityQueue as PQ
+from Queue import *
+import copy
+import heapq
 
 #global
-target_state_array = [1,2,3,4,	5,6,7,8,	9,10,11,12,	13,14,15,0];
+target_state_array = [1,2,3,	4,5,6,	7,8,0];
 
 def __main__():
-	start_state_array = [9,14,15,10,	11,12,2,3,	4,0,1,13,	5,7,8,6]; #final
-	#start_state_array=[1,2,3,4,	5,6,7,8,	9,10,11,12,	13,14,15,0];
-
-	#start_state_array=[15,2,3,4,	8,6,7,5,	9,0,11,12,	10,14,13,1]; #temp
-
-	open_candidate_list = PQ(); #Put the candidate states
+	start_state_array = [1,5,2,	8,0,3,	4,7,6]; #final
+	#start_state_array = [1,2,3,	4,5,6,	7,8,0];
 	closed_list = {}; #dict(); #Dict, used to put the closed states
 
 	start_state = State(start_state_array);
@@ -19,126 +18,174 @@ def __main__():
 	print ("After Evaluation:");
 	evaluate_state = cost_evaluated_state(start_state);
 
+	open_candidate_list = [(evaluate_state.f_dis, evaluate_state.h_dis, evaluate_state)]; #Put the candidate states
+	heapq.heapify(open_candidate_list);
 	# display (evaluate_state.array);
 	# print ("The f_cost is ", evaluate_state.f_dis);
 	# print ("-------------");
 	# print ("End Evaluation");
 
-	open_candidate_list.put((start_state.f_dis, start_state));
-
 	final_state = None;
 
 	time = 0;
 
-	while(open_candidate_list.qsize() > 0):
-		cur_state_tuple = open_candidate_list.get();
+	while(len(open_candidate_list) > 0):
+		cur_state_tuple = heapq.heappop(open_candidate_list);
 
-		cur_state = cur_state_tuple[1]; #Get the state of the candidate, whose index is 1.   0: f_dis
+		cur_state = copy.deepcopy(cur_state_tuple[2]); #Get the state of the candidate, whose index is 2.   0: f_dis   1: h_dis
 
 		display (cur_state.array);
 		print "Cur_state g dis:", cur_state.g_dis;
 		print "Cur_state h dis:", cur_state.h_dis;
 		print "Cur_state f dis:", cur_state.f_dis;
+		print "Its parent_state is:";
+		if cur_state.parent_state != None:
+			display (cur_state.parent_state.array);
 		print "---------------"
 
 		# Put the closed states into the Dict
-		closed_list[tuple(cur_state.array)]=cur_state;
+		closed_list[tuple(cur_state.array)] = cur_state;
 
 		if cur_state.h_dis == 0:
-			final_state = cur_state;
+			final_state = copy.deepcopy(cur_state);
 			break;
 
 		# Search tree implementation
 		open_candidate_list = add_childs_to_openlist(cur_state, closed_list, open_candidate_list);
 
-		print("open_candidate_list size:", open_candidate_list.qsize());
+		print("open_candidate_list size:", len(open_candidate_list));
+
+		check_queue = copy.deepcopy(open_candidate_list);
+		print("Duplicated elements? ", check_dupli(check_queue));
+		print("closed_list size:", len(closed_list));
+
+		# time +=1;
+		# if time == 100:
+		# 	break;
+
+		
 
 	if final_state != None:
 		print("Found a path", final_state.f_dis);
 	else:
 		print("No path");
 
+	# while (len(open_candidate_list) > 0):
+	# 	get  = heapq.heappop(open_candidate_list)[2];
+	# 	display(get.array);
+	# 	print "f_dis:   ",get.f_dis;
+	# 	print "h_dis:   ",get.h_dis;
+	# 	print "g_dis:   ",get.g_dis;
+	# 	print "================"
+	# display(target_state_array)
 
 
 
 def display(state_arry):
 	a = state_arry;
-	for i in range(0,4):
-		print a[i*4], "\t", a[i*4+1], "\t", a[i*4+2],"\t", a[i*4+3];
+	for i in range(0,3):
+		print a[i*3], "\t", a[i*3+1], "\t", a[i*3+2];
 
 
 
 
 def cost_evaluated_state(state):
-	cur_state = state;
-	for index_cur in range(0,16):
+	cur_state = copy.deepcopy(state);
+	for index_cur in range(0,9):
+		if cur_state.array[index_cur] == 0:
+			continue;
 		corr_index = -1;
-		for index_tar in range(0,16):
+		for index_tar in range(0,8):
 			if target_state_array[index_tar] == cur_state.array[index_cur]:
 				corr_index = index_tar;
 				break;
-		h_dis_x = abs((corr_index%4) - (index_cur%4));
-		h_dis_y = abs((corr_index//4) - (index_cur//4));
+		h_dis_x = abs((corr_index%3) - (index_cur%3));
+		h_dis_y = abs((corr_index//3) - (index_cur//3));
 		cur_state.h_dis += h_dis_x
 		cur_state.h_dis += h_dis_y;
 	cur_state.f_dis = cur_state.h_dis + cur_state.g_dis;
 	return cur_state;
 
 
-def add_to_openlist (new_state, parent_state, closed_list, open_candidate_list):
-	candidates = open_candidate_list;
+def add_to_openlist (new_state_in, parent_state_in, closed_list_in, open_candidate_list):
+	new_state = copy.deepcopy(new_state_in);
+	parent_state = copy.deepcopy(parent_state_in);
+	candidates = copy.deepcopy(open_candidate_list);
+	closed_list = closed_list_in.copy();
 	# Put the candidate into the open candidate list.
-	if closed_list.has_key(tuple(new_state.array)) == False:
+	#if closed_list.has_key(tuple(new_state.array)) == False:
+	if (tuple(new_state.array) not in closed_list.keys()):
 		new_state.parent_state = parent_state;
 		new_state.g_dis += 1;
 		new_state.f_dis = new_state.g_dis + new_state.h_dis;
-		candidates.put((new_state.f_dis, new_state));
+		heapq.heappush(candidates,(new_state.f_dis, new_state.h_dis, new_state));
 	return candidates;
+	# else:
+	# 	return candidates;
 
+def add_childs_to_openlist(state_in, closed_list_in, open_candidate_list):
+	zero_index = state_in.array.index(0);
+	candidates = copy.deepcopy(open_candidate_list);
+	closed_list = closed_list_in.copy();
 
-def add_childs_to_openlist(state, closed_list, open_candidate_list):
-	zero_index = state.array.index(0);
-	candidates = open_candidate_list;
-
-	cur_state = state; # keep transfered state as cur_state
+	cur_state = copy.deepcopy(state_in); # keep transfered state as cur_state
 	cur_state.h_dis = 0; #重置子节点的h_dis
 
 	# Move Down	
-	state = cur_state;
-	if zero_index//4 + 1 <= 3:
+	state = copy.deepcopy(cur_state);
+	if zero_index//3 + 1 <= 2:
 		new_state = cost_evaluated_state(
-						swap_ele(state, zero_index, zero_index + 4)
+						swap_ele(state, zero_index, zero_index + 3)
 					);
-		candidates = add_to_openlist(new_state, state, closed_list, candidates);	
+		candidates = add_to_openlist (new_state, state, closed_list, candidates);	
 
 	# Move Right
-	state = cur_state;
-	if zero_index%4 + 1 <= 3:
+	state = copy.deepcopy(cur_state);
+	if zero_index%3 + 1 <= 2:
 		new_state = cost_evaluated_state(
 						swap_ele(state, zero_index, zero_index + 1)
 					);
-		candidates = add_to_openlist(new_state, state, closed_list, candidates);
+		candidates = add_to_openlist (new_state, state, closed_list, candidates);
 
 	# Move Up
-	state = cur_state; #reset state
-	if zero_index//4 - 1 >= 0:
+	state = copy.deepcopy(cur_state);
+	if zero_index//3 - 1 >= 0:
 		new_state = cost_evaluated_state(
-						swap_ele(state, zero_index, zero_index - 4)
+						swap_ele(state, zero_index, zero_index - 3)
 					);
-		candidates = add_to_openlist(new_state, state, closed_list, candidates);
+		candidates = add_to_openlist (new_state, state, closed_list, candidates);
 
 	# Move Left
-	state = cur_state;
-	if zero_index%4 - 1 >= 0:
+	state = copy.deepcopy(cur_state);
+	if zero_index%3 - 1 >= 0:
 		new_state = cost_evaluated_state(
 						swap_ele(state, zero_index, zero_index - 1)
 					);
-		candidates = add_to_openlist(new_state, state, closed_list, candidates);
+		candidates = add_to_openlist (new_state, state, closed_list, candidates);
 
 	return candidates;
 
-def swap_ele(state, index_1, index_2):
-	state.array[index_1], state.array[index_2] = state.array[index_2], state.array[index_1];
-	return state;
 
+def swap_ele(state_come, index_1, index_2):
+	n_state = copy.deepcopy(state_come);
+	n_state.array[index_1], n_state.array[index_2] = n_state.array[index_2], n_state.array[index_1];
+	return n_state;
+
+
+def check_dupli(queue_in):
+	queue = copy.deepcopy(queue_in);
+	qsize = len(queue);
+	list_temp = {};
+	while (len(queue) > 0):
+		q = heapq.heappop(queue);
+		list_temp[tuple(q[2].array)] = q[2];
+	list_size = len(list_temp);
+	print "Queue size: ", qsize;
+	print "List Size: ", list_size;
+	if qsize == list_size:
+		return False;
+	elif qsize > list_size:
+		return True;
+	else:
+		return -1;
 __main__()
