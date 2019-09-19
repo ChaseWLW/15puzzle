@@ -7,6 +7,7 @@ import heapq
 
 #global
 target_state_array = [1,2,3,	4,5,6,	7,8,0];
+MaxDepth = 200;
 
 def __main__():
 	start_state_array = [1,5,2,	8,0,3,	4,7,6]; #final
@@ -27,21 +28,12 @@ def __main__():
 
 	final_state = None;
 
-	time = 0;
+	depth = 0;
 
 	while(len(open_candidate_list) > 0):
 		cur_state_tuple = heapq.heappop(open_candidate_list);
 
 		cur_state = copy.deepcopy(cur_state_tuple[2]); #Get the state of the candidate, whose index is 2.   0: f_dis   1: h_dis
-
-		display (cur_state.array);
-		print "Cur_state g dis:", cur_state.g_dis;
-		print "Cur_state h dis:", cur_state.h_dis;
-		print "Cur_state f dis:", cur_state.f_dis;
-		print "Its parent_state is:";
-		if cur_state.parent_state != None:
-			display (cur_state.parent_state.array);
-		print "---------------"
 
 		# Put the closed states into the Dict
 		closed_list[tuple(cur_state.array)] = cur_state;
@@ -53,15 +45,11 @@ def __main__():
 		# Search tree implementation
 		open_candidate_list = add_childs_to_openlist(cur_state, closed_list, open_candidate_list);
 
-		print("open_candidate_list size:", len(open_candidate_list));
-
 		check_queue = copy.deepcopy(open_candidate_list);
-		print("Duplicated elements? ", check_dupli(check_queue));
-		print("closed_list size:", len(closed_list));
 
-		# time +=1;
-		# if time == 100:
-		# 	break;
+		depth +=1;
+		if depth == MaxDepth:
+			break;
 
 		
 
@@ -70,14 +58,16 @@ def __main__():
 	else:
 		print("No path");
 
-	# while (len(open_candidate_list) > 0):
-	# 	get  = heapq.heappop(open_candidate_list)[2];
-	# 	display(get.array);
-	# 	print "f_dis:   ",get.f_dis;
-	# 	print "h_dis:   ",get.h_dis;
-	# 	print "g_dis:   ",get.g_dis;
-	# 	print "================"
-	# display(target_state_array)
+	show_back_route(final_state);
+
+
+
+
+def show_back_route(state):
+	if state.parent_state != None:
+		show_back_route(state.parent_state);
+	display(state.array);
+	print "================="
 
 
 
