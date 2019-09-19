@@ -6,25 +6,20 @@ import copy
 import heapq
 
 #global
-target_state_array = [1,2,3,	4,5,6,	7,8,0];
+target_state_array = [0,	1,2,3,4,	5,6,7,8,	9,10,11,12,		13,14,15];
 MaxDepth = 200;
 
 def __main__():
-	start_state_array = [1,5,2,	8,0,3,	4,7,6]; #final
-	#start_state_array = [1,2,3,	4,5,6,	7,8,0];
+	start_state_array = [1, 2, 6, 3,	4, 9, 5, 7,		8, 13, 11, 15,		12, 14, 0, 10]; #final
+
 	closed_list = {}; #dict(); #Dict, used to put the closed states
 
 	start_state = State(start_state_array);
 
-	print ("After Evaluation:");
 	evaluate_state = cost_evaluated_state(start_state);
 
 	open_candidate_list = [(evaluate_state.f_dis, evaluate_state.h_dis, evaluate_state)]; #Put the candidate states
 	heapq.heapify(open_candidate_list);
-	# display (evaluate_state.array);
-	# print ("The f_cost is ", evaluate_state.f_dis);
-	# print ("-------------");
-	# print ("End Evaluation");
 
 	final_state = None;
 
@@ -48,10 +43,9 @@ def __main__():
 		check_queue = copy.deepcopy(open_candidate_list);
 
 		depth +=1;
+		print depth
 		if depth == MaxDepth:
 			break;
-
-		
 
 	if final_state != None:
 		print("Found a path", final_state.f_dis);
@@ -73,24 +67,24 @@ def show_back_route(state):
 
 def display(state_arry):
 	a = state_arry;
-	for i in range(0,3):
-		print a[i*3], "\t", a[i*3+1], "\t", a[i*3+2];
+	for i in range(0,4):
+		print a[i*4], "\t", a[i*4+1], "\t", a[i*4+2], "\t", a[i*4+3];
 
 
 
 
 def cost_evaluated_state(state):
 	cur_state = copy.deepcopy(state);
-	for index_cur in range(0,9):
+	for index_cur in range(0,16):
 		if cur_state.array[index_cur] == 0:
 			continue;
 		corr_index = -1;
-		for index_tar in range(0,8):
+		for index_tar in range(1,16):
 			if target_state_array[index_tar] == cur_state.array[index_cur]:
 				corr_index = index_tar;
 				break;
-		h_dis_x = abs((corr_index%3) - (index_cur%3));
-		h_dis_y = abs((corr_index//3) - (index_cur//3));
+		h_dis_x = abs((corr_index%4) - (index_cur%4));
+		h_dis_y = abs((corr_index//4) - (index_cur//4));
 		cur_state.h_dis += h_dis_x
 		cur_state.h_dis += h_dis_y;
 	cur_state.f_dis = cur_state.h_dis + cur_state.g_dis;
@@ -123,15 +117,15 @@ def add_childs_to_openlist(state_in, closed_list_in, open_candidate_list):
 
 	# Move Down	
 	state = copy.deepcopy(cur_state);
-	if zero_index//3 + 1 <= 2:
+	if zero_index//4 + 1 <= 3:
 		new_state = cost_evaluated_state(
-						swap_ele(state, zero_index, zero_index + 3)
+						swap_ele(state, zero_index, zero_index + 4)
 					);
 		candidates = add_to_openlist (new_state, state, closed_list, candidates);	
 
 	# Move Right
 	state = copy.deepcopy(cur_state);
-	if zero_index%3 + 1 <= 2:
+	if zero_index%4 + 1 <= 3:
 		new_state = cost_evaluated_state(
 						swap_ele(state, zero_index, zero_index + 1)
 					);
@@ -139,15 +133,15 @@ def add_childs_to_openlist(state_in, closed_list_in, open_candidate_list):
 
 	# Move Up
 	state = copy.deepcopy(cur_state);
-	if zero_index//3 - 1 >= 0:
+	if zero_index//4 - 1 >= 0:
 		new_state = cost_evaluated_state(
-						swap_ele(state, zero_index, zero_index - 3)
+						swap_ele(state, zero_index, zero_index - 4)
 					);
 		candidates = add_to_openlist (new_state, state, closed_list, candidates);
 
 	# Move Left
 	state = copy.deepcopy(cur_state);
-	if zero_index%3 - 1 >= 0:
+	if zero_index%4 - 1 >= 0:
 		new_state = cost_evaluated_state(
 						swap_ele(state, zero_index, zero_index - 1)
 					);
