@@ -1,17 +1,24 @@
 #!/usr/bin/python
-from  InitialPopulation  import *
 from Puzzle import Puzzle
+from Chromsome import Chromsome
 
-GENE_LEN = 140 
-POPULATION_SIZE=100
+CHROM_LEN = 10
+POPULATION_SIZE=2
 CROSSOVER_RATE = 0.25
 MUTATION_RATE=0.01
 ELITES_SIZE = 10
 MAX_GENERATION = 1000
 
 
+
+
 if __name__ == '__main__':
-	initState=[1,2,0,3]
+	initState=[4,5,6,7,8,2,1,3,0]
 	puzzle = Puzzle(initState)
-	print(puzzle.state)
-	print(puzzle.manhattanDist)
+	puzzle.display()
+	print("mahattan distance: ",puzzle.manhattanDist)
+	print("inversion number: ",puzzle.inversionNum)
+	moves = puzzle.availMove('R')
+	#print(moves.pop())
+	chromsome = Chromsome(puzzle,CHROM_LEN)
+	print(chromsome.steps)

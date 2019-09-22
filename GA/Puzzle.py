@@ -2,10 +2,7 @@ import sys
 import os
 from math import sqrt
 
-###To do 
-### 1* pratical move
-### 2* manhattan Distance
-### 3* final state: blank position will influence the solvalble
+INVERT = dict(L='R',R='L',U='D',D='U') 
 
 class Puzzle:
 	def __init__(self,initialState):
@@ -42,6 +39,17 @@ class Puzzle:
 		self.swap(self.position,self.position+1)
 		self.position += 1
 
+	def move(self,move):
+		if move=="U":
+			self.up()
+		elif move=="D":
+			self.down()
+		elif move=="L":
+			self.left()
+		elif move=="R":
+			self.right()
+		else:
+			print("Invalid step name. please enter either 'U','D','L','R'") 
 	
 	
 ####  calculate inversion numbers
@@ -66,7 +74,7 @@ class Puzzle:
 				os._exit(0)
 	
 
-####    Check legal puzzle
+####    Check legal self
 	def checkPuzzle(self):
 		if(self.width*self.width != self.size):
 			print("Puzzle number is not correct! Exit!")
@@ -89,5 +97,31 @@ class Puzzle:
 	def calManhDist(self):
 		self.manhattanDist = 0
 		for i in range(self.size):
-			self.manhattanDist += abs(self.state[i]//self.width - i//self.width) ###row
-			self.manhattanDist += abs(self.state[i]%self.width - i%self.width)  ###colum
+			if(self.state[i]>0):
+				self.manhattanDist += abs((self.state[i]-1)//self.width - i//self.width) ###row
+				self.manhattanDist += abs((self.state[i]-1)%self.width - i%self.width)  ###colum
+	
+	def display(self):
+		for i in range(self.size):
+			print('%d ' % self.state[i],end='')
+			if(i%self.width==self.width-1):
+				print()
+
+	
+	def availMove(self,lastMove):
+		moves = set(['U','D','L','R'])
+
+		if(self.position % self.width == 0):
+			moves.remove('L')
+		elif(self.position % self.width == self.width-1):
+			moves.remove('R')
+
+		if(self.position //  self.width == 0):
+			moves.remove('U')
+		elif(self.position //  self.width == self.width-1):
+			moves.remove('D')
+
+		if lastMove in INVERT.keys():
+			moves.remove(INVERT[lastMove])
+
+		return moves
