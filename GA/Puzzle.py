@@ -23,21 +23,25 @@ class Puzzle:
 ####  Move  titles
 	def swap(self,pos1,pos2):
 		self.state[pos1],self.state[pos2] = self.state[pos2],self.state[pos1]
+		self.position = pos2
 
 	def up(self):
-		self.swap(self.position,self.position-self.width)
-		self.position -= self.width
-		self.calInversion()
+		new_position = self.position-self.width
+		self.changeRowManhDist(self.position,new_position)
+		self.inversionNum +=  self.changeInversion(self.state[new_position+1:self.position],self.state[new_position])
+		self.swap(self.position,new_position)
 	def down(self):
-		self.swap(self.position,self.position+self.width)
-		self.position += self.width
-		self.calInversion()
+		new_position = self.position+self.width
+		self.changeRowManhDist(self.position,new_position)
+		self.inversionNum -=  self.changeInversion(self.state[self.position+1:new_position],self.state[new_position])
+		self.swap(self.position,new_position)
+
 	def left(self):
+		self.changeColManhDist(self.position,self.position-1)
 		self.swap(self.position,self.position-1)
-		self.position -= 1
 	def right(self):
+		self.changeColManhDist(self.position,self.position+1)
 		self.swap(self.position,self.position+1)
-		self.position += 1
 
 	def move(self,move):
 		if move=="U":
@@ -63,6 +67,16 @@ class Puzzle:
 				if(array[i]>array[j]):
 					self.inversionNum += 1
 
+####  calculate inversion numbers
+	def changeInversion(self,array,movingNum):
+		change = 0
+		for ele in array:
+			if(ele>movingNum):
+				change += 1
+			else:
+				change -= 1
+
+		return change
 		
 	def solvable(self):
 		if(self.width %2 == 1 and self.inversionNum %2 == 1):
@@ -73,6 +87,26 @@ class Puzzle:
 				print("Puzzle is insolvable! Exit!")
 				os._exit(0)
 	
+
+
+	
+	def calManhDist(self):
+		self.manhattanDist = 0
+		for i in range(self.size):
+			if(self.state[i]>0):
+				self.manhattanDist += abs((self.state[i]-1)//self.width - i//self.width) ###Row
+				self.manhattanDist += abs((self.state[i]-1)%self.width - i%self.width)  ###Col
+
+	def changeColManhDist(self,pos1,pos2):
+		 man1 = abs((self.state[pos2]-1)%self.width - pos1%self.width) ###Col After
+		 man2 = abs((self.state[pos2]-1)%self.width - pos2%self.width) ###Col Before
+		 self.manhattanDist += (man1-man2)
+
+	def changeRowManhDist(self,pos1,pos2):
+		 man1 = abs((self.state[pos2]-1)//self.width - pos1//self.width) ###Row After
+		 man2 = abs((self.state[pos2]-1)//self.width - pos2//self.width) ###Row Before
+		 self.manhattanDist += (man1-man2)
+
 
 ####    Check legal self
 	def checkPuzzle(self):
@@ -92,24 +126,17 @@ class Puzzle:
 				if(self.state.count(ele) != 1):
 					print("Repeat tiles! Exit!")
 					os._exit(0)
+	
 
-	
-	def calManhDist(self):
-		self.manhattanDist = 0
-		for i in range(self.size):
-			if(self.state[i]>0):
-				self.manhattanDist += abs((self.state[i]-1)//self.width - i//self.width) ###row
-				self.manhattanDist += abs((self.state[i]-1)%self.width - i%self.width)  ###colum
-	
 	def display(self):
 		for i in range(self.size):
-			print('%d ' % self.state[i],end='')
+			print('%-3d' % self.state[i],end='')
 			if(i%self.width==self.width-1):
 				print()
 
 	
 	def availMove(self,lastMove):
-		moves = set(['U','D','L','R'])
+		moves = ['U','D','L','R']
 
 		if(self.position % self.width == 0):
 			moves.remove('L')
